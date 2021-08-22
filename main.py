@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 st.title("Exploring different Classifiers")
+st.write("Made by Zeaan Pithawala")
 st.write("""
     ## Select any dataset and then see which classifier is best!
 """)
