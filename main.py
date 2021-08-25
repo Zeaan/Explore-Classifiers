@@ -79,3 +79,7 @@ plt.ylabel("Principal Component 2")
 plt.colorbar()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.pyplot()
+
+st.write("If you want to know more about me, visit my Website or LinkedIn and feel free to connect with me!")
+st.write("Website- https://zeaan.github.io/website/")
+st.write("LinkedIn- https://www.linkedin.com/in/zeaan-pithawala/")
