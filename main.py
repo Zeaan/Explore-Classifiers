@@ -14,7 +14,7 @@ st.write("Made by Zeaan Pithawala")
 st.write("""
     ## Select any dataset and then see which classifier is best!
 """)
-dataset_name = st.sidebar.selectbox("Select Dataset", ("Iris","Breast Cancer","Wine Dataset"))
+dataset_name = st.sidebar.selectbox("Select Dataset", ("Iris","Breast Cancer","Wine Dataset","Digits"))
 classifier_name = st.sidebar.selectbox("Select Classifier", ("KNN","SVM","Random Forest"))
 
 def getDataset(dataset_name):
@@ -24,6 +24,8 @@ def getDataset(dataset_name):
         data = datasets.load_breast_cancer()
     if dataset_name == 'Wine Dataset':
         data = datasets.load_wine()
+    if dataset_name == 'Digits':
+        data = datasets.load_digits()
     x = data.data
     y = data.target
     return x,y
