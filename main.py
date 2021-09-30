@@ -8,6 +8,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.decomposition import PCA
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import plot_confusion_matrix
+
 
 st.title("Exploring different Classifiers")
 st.write("Made by Zeaan Pithawala")
@@ -16,6 +18,7 @@ st.write("""
 """)
 dataset_name = st.sidebar.selectbox("Select Dataset", ("Iris","Breast Cancer","Wine Dataset","Digits"))
 classifier_name = st.sidebar.selectbox("Select Classifier", ("KNN","SVM","Random Forest"))
+metrics = st.sidebar.multiselect("What metrics to plot?", ('Confusion Matrix', 'ROC Curve', 'Precision-Recall Curve'))
 
 def getDataset(dataset_name):
     if dataset_name == 'Iris':
@@ -67,6 +70,13 @@ classifier.fit(x_train,y_train)
 y_pred = classifier.predict(x_test)
 acc = accuracy_score(y_test,y_pred)
 
+def plot_metrics(metrics_list):
+        if 'Confusion Matrix' in metrics_list:
+            st.subheader("Confusion Matrix")
+            plot_confusion_matrix(classifier, x_test, y_test)
+            st.set_option('deprecation.showPyplotGlobalUse', False)
+            st.pyplot()
+
 st.write("Classifier =",classifier_name)
 st.write("Accuracy =",str(acc*100)+"%")
 
@@ -81,6 +91,7 @@ plt.ylabel("Principal Component 2")
 plt.colorbar()
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.pyplot()
+plot_metrics('Confusion Matrix')
 
 st.write("If you want to know more about me, visit my Website or LinkedIn and feel free to connect with me!")
 st.write("Website- https://zeaan.github.io/website/")
